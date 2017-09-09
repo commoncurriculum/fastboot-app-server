@@ -1,11 +1,11 @@
 "use strict";
 
 const chalk = require('chalk');
-const cluster = require('cluster');
+//const cluster = require('cluster');
 
 class UI {
-  constructor() {
-    let type = cluster.isMaster ? 'm' : 'w';
+  constructor(noCluster) {
+    let type = !noCluster && cluster.isMaster ? 'm' : 'w';
     this.pid = `${type}${process.pid}`;
   }
 
